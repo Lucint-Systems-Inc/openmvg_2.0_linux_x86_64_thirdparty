@@ -483,7 +483,7 @@ bool GlobalSfMReconstructionEngine_RelativeMotions::Adjust()
   const size_t pointcount_initial = sfm_data_.structure.size();
   RemoveOutliers_PixelResidualError(sfm_data_, 4.0);
   const size_t pointcount_pixelresidual_filter = sfm_data_.structure.size();
-  RemoveOutliers_AngleError(sfm_data_, 2.0);
+  RemoveOutliers_AngleError(sfm_data_, 0.5);
   const size_t pointcount_angular_filter = sfm_data_.structure.size();
   OPENMVG_LOG_INFO << "Outlier removal (remaining #points):\n"
     << "\t initial structure size #3DPoints: " << pointcount_initial << "\n"
