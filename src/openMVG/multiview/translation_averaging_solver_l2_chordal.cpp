@@ -65,7 +65,7 @@ bool solve_translations_problem_l2_chordal
 )
 {
   // seed the random number generator
-  std::srand( std::time( nullptr ) );
+  //std::srand( std::time( nullptr ) );
 
   // re index the edges to be a sequential set
   std::vector<int> reindexed_edges(edges, edges+2*num_edges);
