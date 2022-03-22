@@ -88,7 +88,7 @@ void openMVG::sfm::ViewPriors::load( Archive & ar )
   */
 }
 
-CEREAL_REGISTER_TYPE_WITH_NAME( openMVG::sfm::ViewPriors, "view_priors" );
-CEREAL_REGISTER_POLYMORPHIC_RELATION(openMVG::sfm::View, openMVG::sfm::ViewPriors);
+//CEREAL_REGISTER_TYPE_WITH_NAME( openMVG::sfm::ViewPriors, "view_priors" );
+//CEREAL_REGISTER_POLYMORPHIC_RELATION(openMVG::sfm::View, openMVG::sfm::ViewPriors);
 
 #endif // OPENMVG_SFM_SFM_VIEW_PRIORS_IO_HPP

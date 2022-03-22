@@ -26,7 +26,7 @@ inline void openMVG::cameras::Intrinsic_Spherical::load( Archive & ar )
 {
   ar(cereal::base_class<IntrinsicBase>(this));
 }
-CEREAL_REGISTER_TYPE_WITH_NAME(openMVG::cameras::Intrinsic_Spherical, "spherical");
+//CEREAL_REGISTER_TYPE_WITH_NAME(openMVG::cameras::Intrinsic_Spherical, "spherical");
 
 namespace cereal
 {
@@ -34,6 +34,6 @@ namespace cereal
   template <class Archive> struct specialize<Archive, openMVG::cameras::Intrinsic_Spherical, cereal::specialization::member_load_save> {};
 }
 
-CEREAL_REGISTER_POLYMORPHIC_RELATION(openMVG::cameras::IntrinsicBase, openMVG::cameras::Intrinsic_Spherical);
+//CEREAL_REGISTER_POLYMORPHIC_RELATION(openMVG::cameras::IntrinsicBase, openMVG::cameras::Intrinsic_Spherical);
 
 #endif // #ifndef OPENMVG_CAMERAS_CAMERA_SPHERICAL_IO_HPP

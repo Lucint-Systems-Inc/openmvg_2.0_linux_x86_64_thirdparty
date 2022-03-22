@@ -28,8 +28,8 @@ inline void openMVG::cameras::Pinhole_Intrinsic_Brown_T2::load( Archive & ar )
     ar( cereal::make_nvp( "disto_t2", params_ ) );
 }
 
-CEREAL_REGISTER_TYPE_WITH_NAME( openMVG::cameras::Pinhole_Intrinsic_Brown_T2, "pinhole_brown_t2" );
-CEREAL_REGISTER_POLYMORPHIC_RELATION(openMVG::cameras::IntrinsicBase, openMVG::cameras::Pinhole_Intrinsic_Brown_T2)
+//CEREAL_REGISTER_TYPE_WITH_NAME( openMVG::cameras::Pinhole_Intrinsic_Brown_T2, "pinhole_brown_t2" );
+//CEREAL_REGISTER_POLYMORPHIC_RELATION(openMVG::cameras::IntrinsicBase, openMVG::cameras::Pinhole_Intrinsic_Brown_T2)
 
 #endif // #ifndef OPENMVG_CAMERAS_CAMERA_PINHOLE_BROWN_IO_HPP
 

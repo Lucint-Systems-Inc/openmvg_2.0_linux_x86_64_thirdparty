@@ -38,7 +38,7 @@ void openMVG::cameras::Pinhole_Intrinsic::load( Archive & ar )
     *this = Pinhole_Intrinsic( w_, h_, focal_length, pp[0], pp[1] );
 }
 
-CEREAL_REGISTER_TYPE_WITH_NAME(openMVG::cameras::Pinhole_Intrinsic, "pinhole");
-CEREAL_REGISTER_POLYMORPHIC_RELATION(openMVG::cameras::IntrinsicBase, openMVG::cameras::Pinhole_Intrinsic);
+//CEREAL_REGISTER_TYPE_WITH_NAME(openMVG::cameras::Pinhole_Intrinsic, "pinhole");
+//CEREAL_REGISTER_POLYMORPHIC_RELATION(openMVG::cameras::IntrinsicBase, openMVG::cameras::Pinhole_Intrinsic);
 
 #endif // #ifndef OPENMVG_CAMERAS_CAMERA_PINHOLE_IO_HPP

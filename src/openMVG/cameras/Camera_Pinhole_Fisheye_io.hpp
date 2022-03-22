@@ -26,7 +26,7 @@ inline void openMVG::cameras::Pinhole_Intrinsic_Fisheye::load( Archive & ar )
     ar( cereal::make_nvp( "fisheye", params_ ) );
 }
 
-CEREAL_REGISTER_TYPE_WITH_NAME( openMVG::cameras::Pinhole_Intrinsic_Fisheye, "fisheye" );
-CEREAL_REGISTER_POLYMORPHIC_RELATION(openMVG::cameras::IntrinsicBase, openMVG::cameras::Pinhole_Intrinsic_Fisheye)
+//CEREAL_REGISTER_TYPE_WITH_NAME( openMVG::cameras::Pinhole_Intrinsic_Fisheye, "fisheye" );
+//CEREAL_REGISTER_POLYMORPHIC_RELATION(openMVG::cameras::IntrinsicBase, openMVG::cameras::Pinhole_Intrinsic_Fisheye)
 
 #endif // #ifndef OPENMVG_CAMERAS_CAMERA_PINHOLE_FISHEYE_IO_HPP
