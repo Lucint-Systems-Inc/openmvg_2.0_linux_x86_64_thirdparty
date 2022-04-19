@@ -9,6 +9,8 @@ CMAKE_MINIMUM_REQUIRED(VERSION 3.1)
 
 project(openMVG C CXX)
 
+SET( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -fPIC" CACHE STRING "Extra CXX Flags" FORCE )
+
 # Run automoc on .hh files in new versions of cmake
 if (${CMAKE_VERSION} VERSION_GREATER "3.17" OR
     ${CMAKE_VERSION} VERSION_EQUAL "3.17")
