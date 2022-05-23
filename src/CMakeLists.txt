@@ -9,7 +9,9 @@ CMAKE_MINIMUM_REQUIRED(VERSION 3.1)
 
 project(openMVG C CXX)
 
-SET( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -fPIC" CACHE STRING "Extra CXX Flags" FORCE )
+include(../../build_config/BuildOptions.cmake)
+
+SET( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} ${GLOBAL_CXX_FLAGS} -fPIC" CACHE STRING "Extra CXX Flags" FORCE )
 
 # Run automoc on .hh files in new versions of cmake
 if (${CMAKE_VERSION} VERSION_GREATER "3.17" OR
@@ -111,27 +113,27 @@ endif()
 # ==============================================================================
 set(CMAKE_MODULE_PATH
   ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmakeFindModules)
-include(OptimizeForArchitecture)
-OptimizeForArchitecture()
+# include(OptimizeForArchitecture)
+# OptimizeForArchitecture()
 
-if (UNIX AND NOT OpenMVG_BUILD_COVERAGE)
-  set(CMAKE_C_FLAGS_RELEASE "-O3")
-  set(CMAKE_CXX_FLAGS_RELEASE "-O3")
-endif ()
+# if (UNIX AND NOT OpenMVG_BUILD_COVERAGE)
+#   set(CMAKE_C_FLAGS_RELEASE "-O3")
+#   set(CMAKE_CXX_FLAGS_RELEASE "-O3")
+# endif ()
 
 # ==============================================================================
 # Check C++11 support
 # ==============================================================================
-include(CXX11)
-check_for_cxx11_compiler(CXX11_COMPILER)
-# If a C++11 compiler is available, then set the appropriate flags
-if (CXX11_COMPILER)
-  set(CMAKE_CXX_STANDARD 11)
-  set(CMAKE_CXX_STANDARD_REQUIRED ON)
-  set(CMAKE_CXX_EXTENSIONS OFF)
-else (CXX11_COMPILER)
-  message(FATAL_ERROR "A CXX11 compiler is required.")
-endif (CXX11_COMPILER)
+# include(CXX11)
+# check_for_cxx11_compiler(CXX11_COMPILER)
+# # If a C++11 compiler is available, then set the appropriate flags
+# if (CXX11_COMPILER)
+  # set(CMAKE_CXX_STANDARD 14)
+  # set(CMAKE_CXX_STANDARD_REQUIRED ON)
+  # set(CMAKE_CXX_EXTENSIONS OFF)
+# else (CXX11_COMPILER)
+#   message(FATAL_ERROR "A CXX11 compiler is required.")
+# endif (CXX11_COMPILER)
 
 # ==============================================================================
 # OpenMP detection
@@ -257,14 +259,15 @@ endif()
 # - external if EIGEN_INCLUDE_DIR_HINTS is defined
 # - internal if Eigen not found
 # ==============================================================================
-find_package(Eigen3 QUIET)
-if (NOT Eigen3_FOUND)
-  set(EIGEN_INCLUDE_DIR_HINTS ${CMAKE_CURRENT_SOURCE_DIR}/third_party/eigen)
-  set(OpenMVG_USE_INTERNAL_EIGEN ON)
-  find_package(Eigen QUIET)
-else()
-  set(EIGEN_INCLUDE_DIRS ${EIGEN3_INCLUDE_DIR})
-endif()
+find_package(Eigen3)
+set(EIGEN_INCLUDE_DIRS ${EIGEN3_INCLUDE_DIR})
+# if (NOT Eigen3_FOUND)
+#   set(EIGEN_INCLUDE_DIR_HINTS ${CMAKE_CURRENT_SOURCE_DIR}/third_party/eigen)
+#   set(OpenMVG_USE_INTERNAL_EIGEN ON)
+#   find_package(Eigen QUIET)
+# else()
+#  set(EIGEN_INCLUDE_DIRS ${EIGEN3_INCLUDE_DIR})
+# endif()
 
 # ==============================================================================
 # Ceres
@@ -273,16 +276,16 @@ endif()
 # - internal if ceres not found (ceres-solver+cxsparse+miniglog)
 # ==============================================================================
 find_package(Ceres PATHS ${CERES_DIR_HINTS})
-if (NOT Ceres_FOUND)
-  set(OpenMVG_USE_INTERNAL_CERES ON)
-  set(CERES_INCLUDE_DIRS
-    ${CMAKE_CURRENT_SOURCE_DIR}/third_party/ceres-solver/include
-    ${CMAKE_CURRENT_SOURCE_DIR}/third_party/ceres-solver/internal/ceres/miniglog
-    ${PROJECT_BINARY_DIR}/third_party/ceres-solver/config)
-    FILE(READ "${CMAKE_CURRENT_SOURCE_DIR}/third_party/ceres-solver/VERSION" CERES_CONFIG)
-    STRING(REGEX REPLACE "version ([0-9.]+).*" "\\1" CERES_VERSION ${CERES_CONFIG})
-  set(CERES_LIBRARIES openMVG_ceres)
-endif()
+# if (NOT Ceres_FOUND)
+#   set(OpenMVG_USE_INTERNAL_CERES ON)
+#   set(CERES_INCLUDE_DIRS
+#     ${CMAKE_CURRENT_SOURCE_DIR}/third_party/ceres-solver/include
+#     ${CMAKE_CURRENT_SOURCE_DIR}/third_party/ceres-solver/internal/ceres/miniglog
+#     ${PROJECT_BINARY_DIR}/third_party/ceres-solver/config)
+#     FILE(READ "${CMAKE_CURRENT_SOURCE_DIR}/third_party/ceres-solver/VERSION" CERES_CONFIG)
+#     STRING(REGEX REPLACE "version ([0-9.]+).*" "\\1" CERES_VERSION ${CERES_CONFIG})
+#   set(CERES_LIBRARIES openMVG_ceres)
+# endif()
 
 # ==============================================================================
 # Flann
