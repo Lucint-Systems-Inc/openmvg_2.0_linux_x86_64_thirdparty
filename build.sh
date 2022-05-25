@@ -3,6 +3,7 @@
 BUILD_DIR=`readlink -f ./cmake_build`
 OUTPUT_DIR=`readlink -f ./built`
 LSI_ROOT_DIR=`readlink -f ~/lsi/`
+LSI_BUILD_DIR=`readlink -f ~/lsi_build`
 
 echo "Using build dir $BUILD_DIR"
 
@@ -15,6 +16,7 @@ mkdir -vp $OUTPUT_DIR
 cd $BUILD_DIR
 
 cmake \
+    -D BUILD_OPTIONS_PATH=$LSI_BUILD_DIR/build_configurations/x86_64/BuildOptions.cmake \
     -D CMAKE_BUILD_TYPE=Release \
     -D CMAKE_INSTALL_PREFIX="" \
     -D OpenMVG_BUILD_DOC=OFF \

@@ -9,7 +9,7 @@ CMAKE_MINIMUM_REQUIRED(VERSION 3.1)
 
 project(openMVG C CXX)
 
-include(../../build_config/BuildOptions.cmake)
+include(${BUILD_OPTIONS_PATH})
 
 SET( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} ${GLOBAL_CXX_FLAGS} -fPIC" CACHE STRING "Extra CXX Flags" FORCE )
 

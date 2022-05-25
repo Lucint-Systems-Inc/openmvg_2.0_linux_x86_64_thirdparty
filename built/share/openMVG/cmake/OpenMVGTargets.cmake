@@ -109,7 +109,7 @@ set_target_properties(OpenMVG::openMVG_exif PROPERTIES
 add_library(OpenMVG::openMVG_features STATIC IMPORTED)
 
 set_target_properties(OpenMVG::openMVG_features PROPERTIES
-  INTERFACE_COMPILE_OPTIONS "-fPIC;-march=haswell;-fPIC;-fopenmp"
+  INTERFACE_COMPILE_OPTIONS "-march=haswell;-fPIC;-fopenmp"
   INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;${_IMPORT_PREFIX}/include/openMVG"
   INTERFACE_LINK_LIBRARIES "\$<LINK_ONLY:OpenMVG::openMVG_fast>;\$<LINK_ONLY:OpenMVG::openMVG_stlplus>;gomp;OpenMVG::cereal"
 )
@@ -195,7 +195,7 @@ set_target_properties(OpenMVG::openMVG_multiview PROPERTIES
 add_library(OpenMVG::openMVG_numeric STATIC IMPORTED)
 
 set_target_properties(OpenMVG::openMVG_numeric PROPERTIES
-  INTERFACE_COMPILE_OPTIONS "-fPIC;-march=haswell;-fPIC;-fopenmp"
+  INTERFACE_COMPILE_OPTIONS "-march=haswell;-fPIC;-fopenmp"
   INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/home/build/lsi_build/thirdparty/eigen_3.4.0_thirdparty/built/usr/local/include/eigen3"
 )
 
